@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 </head>
-<body>
-    <div class="container p-3 mb-2 bg-info text-white" >
+<body class="bg-dark text-white font-weight-bold">
+    <div class="container mt-5 p-5">
            <div class="form-group">
               <label for="priceOfStock">Price For Stock : </label>
               <input type="text" class="form-control" id="priceOfStock">
@@ -17,12 +17,16 @@
               <label for="position">Position For Stock : </label>
               <input type="text" class="form-control" id="position">
             </div>
-            <button class="btn btn-primary" id="calculate">Calculate</button>
+            <div class="form-group">
+                <label for="percentage">Percentage : </label>
+                <input type="text" class="form-control" id="percentage" value="1">
+              </div>
+            <button class="btn btn-secondary" id="calculate">Calculate</button>
         
           <hr>
           <div class="container">
               <H2>Stop Loss : </H2>
-              <h3 id="answer"></h3>
+              <p id="answer"></p>
           </div>
     </div>
 
@@ -33,15 +37,17 @@
         function calculateValue() {
             stockValue = document.getElementById("priceOfStock").value;
             stockPosition = document.getElementById("position").value;
+            percentage = document.getElementById("percentage").value;
 
             stockValue = Number(stockValue);
             stockPosition = Number(stockPosition);
+            percentage = Number(percentage);
 
             multiplyValuePos = stockPosition * stockValue;
 
-            percentage = multiplyValuePos * (1/100);
+            percentageValue = multiplyValuePos * ( percentage / 100 );
 
-            newValue = multiplyValuePos - percentage;
+            newValue = multiplyValuePos - percentageValue;
 
             finalValue = newValue / stockPosition;
 
