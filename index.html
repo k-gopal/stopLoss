@@ -7,28 +7,86 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 </head>
-<body class="bg-dark text-white font-weight-bold">
+<body class="bg-dark font-weight-bold">
+
     <div class="container mt-5 p-5">
-           <div class="form-group">
-              <label for="priceOfStock">Price For Stock : </label>
-              <input type="text" class="form-control" id="priceOfStock">
-            </div>
-            <div class="form-group">
-              <label for="position">Position For Stock : </label>
-              <input type="text" class="form-control" id="position">
-            </div>
-            <div class="form-group">
-                <label for="percentage">Percentage : </label>
-                <input type="text" class="form-control" id="percentage" value="1">
-              </div>
-            <button class="btn btn-secondary" id="calculate">Calculate</button>
-        
-          <hr>
-          <div class="container">
-              <H2>Stop Loss : </H2>
-              <p id="answer"></p>
+
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-lg text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Stop Loss ->
+              </button>
+            </h2>
           </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="container mt-5 p-5">
+                    <div class="form-group">
+                       <label for="priceOfStock">Price For Stock : </label>
+                       <input type="text" class="form-control" id="priceOfStock">
+                     </div>
+                     <div class="form-group">
+                       <label for="position">Position For Stock : </label>
+                       <input type="text" class="form-control" id="position">
+                     </div>
+                     <div class="form-group">
+                         <label for="percentage">Percentage : </label>
+                         <input type="text" class="form-control" id="percentage" value="1">
+                       </div>
+                     <button class="btn btn-secondary" id="calculate">Calculate</button>
+                 
+                   <hr>
+                   <div class="container">
+                       <H2>Stop Loss : </H2>
+                       <p id="answer"></p>
+                   </div>
+             </div>
+         
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-lg text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Take Profit ->
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="container mt-5 p-5">
+                    <div class="form-group">
+                       <label for="priceOfStock1">Price For Stock : </label>
+                       <input type="text" class="form-control" id="priceOfStock1">
+                     </div>
+                     <div class="form-group">
+                       <label for="position1">Position For Stock : </label>
+                       <input type="text" class="form-control" id="position1">
+                     </div>
+                     <div class="form-group">
+                         <label for="percentage1">Percentage : </label>
+                         <input type="text" class="form-control" id="percentage1" value="1">
+                       </div>
+                     <button class="btn btn-secondary" id="calculate1">Calculate</button>
+                 
+                   <hr>
+                   <div class="container">
+                       <H2>Take Profit : </H2>
+                       <p id="answer1"></p>
+                   </div>
+             </div>
+         
+            </div>
+          </div>
+        </div>
     </div>
+
+</div>
+
 
 
     <script>
@@ -55,6 +113,33 @@
              
         }
 
+
+        document.getElementById("calculate1").onclick = calculateValue1;
+
+        function calculateValue1() {
+            stockValue1 = document.getElementById("priceOfStock1").value;
+            stockPosition1 = document.getElementById("position1").value;
+            percentage1 = document.getElementById("percentage1").value;
+
+            stockValue1 = Number(stockValue1);
+            stockPosition1 = Number(stockPosition1);
+            percentage1 = Number(percentage1);
+
+            multiplyValuePos1 = stockPosition1 * stockValue1;
+
+            percentageValue1 = multiplyValuePos1 * ( percentage1 / 100 );
+
+            newValue1 = multiplyValuePos1 + percentageValue1;
+
+            finalValue1 = newValue1 / stockPosition1;
+
+            document.getElementById("answer1").innerHTML = finalValue1
+             
+        }
+
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
