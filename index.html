@@ -1,151 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop Loss & Take Profit</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>I.investorworld</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 </head>
-<body class="bg-dark font-weight-bold">
 
-    <div class="container mt-5 p-5">
+<body class="bg-warning">
 
-    <div class="accordion" id="accordionExample">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-              <button class="btn btn-lg text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                Stop Loss ->
-              </button>
-            </h2>
-          </div>
-      
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-                <div class="container mt-5 p-5">
-                    <div class="row">
-                        <div class="col">
-                    <div class="form-group">
-                       <label for="priceOfStock">Price For Stock : </label>
-                       <input type="text" class="form-control" id="priceOfStock">
-                     </div>
-                        </div>
-                        <div class="col">
-                     <div class="form-group">
-                       <label for="position">Position For Stock : </label>
-                       <input type="text" class="form-control" id="position">
-                     </div>
-                        </div>
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-5 border rounded shadow-lg bg-white">
+
+                <div class="container">
+                    <h1>Stop Loss</h1>
+
+                    <label for="priceOfStock" class="font-weight-bold">Price Of Stock : </label>
+                    <input type="text" name="priceOfStock" id="priceOfStock" class="form-control">
+
+                    <label for="positionOfStock" class="font-weight-bold">Position Of Stock :</label>
+                    <input type="text" name="positionOfStock" id="positionOfStock" class="form-control">
+
+                    <label for="pricePosition" class="font-weight-bold">Price * Position :</label>
+                    <input type="text" name="pricePosition" id="pricePosition" class="form-control" disabled>
+
+                    <label for="percentage" class="font-weight-bold">Percentage : </label>
+                    <input type="text" name="percentage" id="percentage" class="form-control">
+
+                    <label for="pricePositionPercentage" class="font-weight-bold">PricePosition * Percntage :</label>
+                    <input type="text" name="pricePositionPercentage" id="pricePositionPercentage" class="form-control"
+                        disabled>
+
+                    <label for="pricePositionMinusPricePositionPercentage" class="font-weight-bold">PricePosition -
+                        PricePositionPercentage</label>
+                    <input type="text" name="pricePositionMinusPricePositionPercentage"
+                        id="pricePositionMinusPricePositionPercentage" class="form-control" disabled>
+
+                    <button class="btn btn-lg btn-primary m-3" id="calcStopLoss" data-toggle="modal"
+                        data-target="#exampleModal"> Calculate Stop Loss </button> <br>
+
+
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <div class="col-5 border rounded shadow-lg bg-white">
+                <h1>Take Profit</h1>
+
+                <label for="priceOfStock1" class="font-weight-bold">Price Of Stock : </label>
+                <input type="text" name="priceOfStock1" id="priceOfStock1" class="form-control">
+
+                <label for="positionOfStock1" class="font-weight-bold">Position Of Stock :</label>
+                <input type="text" name="positionOfStock1" id="positionOfStock1" class="form-control">
+
+                <label for="pricePosition1" class="font-weight-bold">Price * Position :</label>
+                <input type="text" name="pricePosition1" id="pricePosition1" class="form-control" disabled>
+
+                <label for="percentage1" class="font-weight-bold">Percentage : </label>
+                <input type="text" name="percentage1" id="percentage1" class="form-control">
+
+                <label for="pricePositionPercentage1" class="font-weight-bold">PricePosition * Percntage :</label>
+                <input type="text" name="pricePositionPercentage1" id="pricePositionPercentage1" class="form-control"
+                    disabled>
+
+                <label for="pricePositionMinusPricePositionPercentage1" class="font-weight-bold">PricePosition +
+                    PricePositionPercentage</label>
+                <input type="text" name="pricePositionMinusPricePositionPercentage1"
+                    id="pricePositionMinusPricePositionPercentage1" class="form-control" disabled>
+
+                <button class="btn btn-lg btn-primary m-3" id="calcStopLoss1" data-toggle="modal"
+                    data-target="#exampleModal1"> Calculate Take Profit </button> <br>
+
+
+
+
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold text-danger" id="exampleModalLabel">Stop Loss</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                     <div class="form-group">
-                         <label for="percentage">Percentage : </label>
-                         <input type="text" class="form-control" id="percentage" value="1">
-                       </div>
-                     <button class="btn btn-secondary" id="calculate">Calculate</button>
-                 
-                   <hr>
-                   <div class="container">
-                       <H2>Stop Loss : </H2>
-                       <p id="answer"></p>
-                   </div>
-             </div>
-         
+                    <div class="modal-body">
+                        <h1 class="font-weight-bold text-danger text-center" id="stopLoss"></h1>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-              <button class="btn btn-lg text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Take Profit ->
-              </button>
-            </h2>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body">
-                <div class="container mt-5 p-5">
-                    <div class="form-group">
-                       <label for="priceOfStock1">Price For Stock : </label>
-                       <input type="text" class="form-control" id="priceOfStock1">
-                     </div>
-                     <div class="form-group">
-                       <label for="position1">Position For Stock : </label>
-                       <input type="text" class="form-control" id="position1">
-                     </div>
-                     <div class="form-group">
-                         <label for="percentage1">Percentage : </label>
-                         <input type="text" class="form-control" id="percentage1" value="1">
-                       </div>
-                     <button class="btn btn-secondary" id="calculate1">Calculate</button>
-                 
-                   <hr>
-                   <div class="container">
-                       <H2>Take Profit : </H2>
-                       <p id="answer1"></p>
-                   </div>
-             </div>
-         
-            </div>
-          </div>
-        </div>
-    </div>
 
-</div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold text-success" id="exampleModalLabel1">Take Profit</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 class="font-weight-bold text-success text-center" id="stopLoss1"></h1>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
 
     <script>
-        document.getElementById("calculate").onclick = calculateValue;
+        document.getElementById("calcStopLoss").onclick = CalculateStopLoss;
 
-        function calculateValue() {
-            stockValue = document.getElementById("priceOfStock").value;
-            stockPosition = document.getElementById("position").value;
-            percentage = document.getElementById("percentage").value;
+        function CalculateStopLoss() {
+            var stockPrice = document.getElementById("priceOfStock").value;
+            var stockPosition = document.getElementById("positionOfStock").value;
+            var stockPercent = document.getElementById("percentage").value;
 
-            stockValue = Number(stockValue);
+            stockPrice = Number(stockPrice);
             stockPosition = Number(stockPosition);
-            percentage = Number(percentage);
+            stockPercent = Number(stockPercent);
 
-            multiplyValuePos = stockPosition * stockValue;
+            var multiplyPricePos = (stockPrice * stockPosition);
 
-            percentageValue = multiplyValuePos * ( percentage / 100 );
+            var pricePosPer = (multiplyPricePos * (stockPercent / 100));
 
-            newValue = multiplyValuePos - percentageValue;
+            var minusResult = (multiplyPricePos - pricePosPer);
 
-            finalValue = newValue / stockPosition;
+            document.getElementById("pricePositionMinusPricePositionPercentage").value = minusResult;
+            document.getElementById("pricePosition").value = multiplyPricePos;
+            document.getElementById("pricePositionPercentage").value = pricePosPer;
+            document.getElementById("stopLoss").innerHTML = minusResult / stockPosition;
 
-            document.getElementById("answer").innerHTML = finalValue
-             
         }
 
+        document.getElementById("calcStopLoss1").onclick = CalculateStopLoss1;
 
-        document.getElementById("calculate1").onclick = calculateValue1;
+        function CalculateStopLoss1() {
+            var stockPrice1 = document.getElementById("priceOfStock1").value;
+            var stockPosition1 = document.getElementById("positionOfStock1").value;
+            var stockPercent1 = document.getElementById("percentage1").value;
 
-        function calculateValue1() {
-            stockValue1 = document.getElementById("priceOfStock1").value;
-            stockPosition1 = document.getElementById("position1").value;
-            percentage1 = document.getElementById("percentage1").value;
-
-            stockValue1 = Number(stockValue1);
+            stockPrice1 = Number(stockPrice1);
             stockPosition1 = Number(stockPosition1);
-            percentage1 = Number(percentage1);
+            stockPercent1 = Number(stockPercent1);
 
-            multiplyValuePos1 = stockPosition1 * stockValue1;
+            var multiplyPricePos1 = (stockPrice1 * stockPosition1);
 
-            percentageValue1 = multiplyValuePos1 * ( percentage1 / 100 );
+            var pricePosPer1 = (multiplyPricePos1 * (stockPercent1 / 100));
 
-            newValue1 = multiplyValuePos1 + percentageValue1;
+            var minusResult1 = (multiplyPricePos1 + pricePosPer1);
 
-            finalValue1 = newValue1 / stockPosition1;
+            document.getElementById("pricePositionMinusPricePositionPercentage1").value = minusResult1;
+            document.getElementById("pricePosition1").value = multiplyPricePos1;
+            document.getElementById("pricePositionPercentage1").value = pricePosPer1;
+            document.getElementById("stopLoss1").innerHTML = minusResult1 / stockPosition1;
 
-            document.getElementById("answer1").innerHTML = finalValue1
-             
         }
 
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>
